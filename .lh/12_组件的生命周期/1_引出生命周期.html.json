@@ -1,0 +1,98 @@
+{
+    "sourceFile": "12_组件的生命周期/1_引出生命周期.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 20,
+            "patches": [
+                {
+                    "date": 1671682101311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671682152006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,18 @@\n   <!-- 将jsx转为js -->\r\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n-    class Life\r\n+    class Life extends React.Component{\r\n+      render(){\r\n+        return (\r\n+          <div>\r\n+            \r\n+          </div>\r\n+        )\r\n+      }\r\n+    }\r\n+    ReactDOM.render(<Life/>,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671682176148,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,10 @@\n     class Life extends React.Component{\r\n       render(){\r\n         return (\r\n           <div>\r\n-            \r\n+            <h2>我要消失了</h2>\r\n+            <button>卸载组件</button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671682189643,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n       render(){\r\n         return (\r\n           <div>\r\n             <h2>我要消失了</h2>\r\n-            <button>卸载组件</button>\r\n+            <button onClick={this.Dead}>卸载组件</button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671682201442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,13 +19,14 @@\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Life extends React.Component{\r\n+      Death\r\n       render(){\r\n         return (\r\n           <div>\r\n             <h2>我要消失了</h2>\r\n-            <button onClick={this.Dead}>卸载组件</button>\r\n+            <button onClick={this.Death}>卸载组件</button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671682214685,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,14 +19,16 @@\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Life extends React.Component{\r\n-      Death\r\n+      death = ()=>{\r\n+        \r\n+      }\r\n       render(){\r\n         return (\r\n           <div>\r\n             <h2>我要消失了</h2>\r\n-            <button onClick={this.Death}>卸载组件</button>\r\n+            <button onClick={this.death}>卸载组件</button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671682220024,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Life extends React.Component{\r\n       death = ()=>{\r\n-        \r\n+        ReactDOM.\r\n       }\r\n       render(){\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671682228078,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Life extends React.Component{\r\n       death = ()=>{\r\n-        ReactDOM.\r\n+        ReactDOM.unmounte\r\n       }\r\n       render(){\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671682237418,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Life extends React.Component{\r\n       death = ()=>{\r\n-        ReactDOM.unmounte\r\n+        ReactDOM.unmountComponent\r\n       }\r\n       render(){\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671682242534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Life extends React.Component{\r\n       death = ()=>{\r\n-        ReactDOM.unmountComponent\r\n+        ReactDOM.unmountComponentAtNode()\r\n       }\r\n       render(){\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671682249357,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Life extends React.Component{\r\n       death = ()=>{\r\n-        ReactDOM.unmountComponentAtNode()\r\n+        ReactDOM.unmountComponentAtNode(document.getElementById('test'))\r\n       }\r\n       render(){\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671682267719,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,9 @@\n     class Life extends React.Component{\r\n       death = ()=>{\r\n         ReactDOM.unmountComponentAtNode(document.getElementById('test'))\r\n       }\r\n+      \r\n       render(){\r\n         return (\r\n           <div>\r\n             <h2>我要消失了</h2>\r\n"
+                },
+                {
+                    "date": 1671682287499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n     class Life extends React.Component{\r\n       death = ()=>{\r\n         ReactDOM.unmountComponentAtNode(document.getElementById('test'))\r\n       }\r\n-      \r\n+      componentDidMount\r\n       render(){\r\n         return (\r\n           <div>\r\n             <h2>我要消失了</h2>\r\n"
+                },
+                {
+                    "date": 1671682318180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,14 @@\n     class Life extends React.Component{\r\n       death = ()=>{\r\n         ReactDOM.unmountComponentAtNode(document.getElementById('test'))\r\n       }\r\n-      componentDidMount\r\n+      componentDidMount(){\r\n+        console.log('mount');\r\n+      }\r\n+      componentWillUnmount(){\r\n+        console.log('unmount');\r\n+      }\r\n       render(){\r\n         return (\r\n           <div>\r\n             <h2>我要消失了</h2>\r\n"
+                },
+                {
+                    "date": 1671682340236,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,11 @@\n       death = ()=>{\r\n         ReactDOM.unmountComponentAtNode(document.getElementById('test'))\r\n       }\r\n       componentDidMount(){\r\n-        console.log('mount');\r\n+        this.timer = setTimeout(()=>{\r\n+          \r\n+        },200)\r\n       }\r\n       componentWillUnmount(){\r\n         console.log('unmount');\r\n       }\r\n"
+                },
+                {
+                    "date": 1671682399314,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,10 +23,13 @@\n       death = ()=>{\r\n         ReactDOM.unmountComponentAtNode(document.getElementById('test'))\r\n       }\r\n       componentDidMount(){\r\n-        this.timer = setTimeout(()=>{\r\n-          \r\n+        this.timer = setInterval(()=>{\r\n+          let {opacity} = this.state\r\n+          opacity -= 0.1\r\n+          if(opacity <= 0) opacity = 1\r\n+          this.setState({opacity})\r\n         },200)\r\n       }\r\n       componentWillUnmount(){\r\n         console.log('unmount');\r\n"
+                },
+                {
+                    "date": 1671682412804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,8 +32,9 @@\n         },200)\r\n       }\r\n       componentWillUnmount(){\r\n         console.log('unmount');\r\n+        clearInterval(this.timer)\r\n       }\r\n       render(){\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671682462049,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n       }\r\n       render(){\r\n         return (\r\n           <div>\r\n-            <h2>我要消失了</h2>\r\n+            <h2 style={{opacity:this.opacity}}>我要消失了</h2>\r\n             <button onClick={this.death}>卸载组件</button>\r\n           </div>\r\n         )\r\n       }\r\n"
+                },
+                {
+                    "date": 1671682476390,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n       }\r\n       render(){\r\n         return (\r\n           <div>\r\n-            <h2 style={{opacity:this.opacity}}>我要消失了</h2>\r\n+            <h2 style={{opacity:this.state.opacity}}>我要消失了</h2>\r\n             <button onClick={this.death}>卸载组件</button>\r\n           </div>\r\n         )\r\n       }\r\n"
+                },
+                {
+                    "date": 1671682508809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n       }\r\n       render(){\r\n         return (\r\n           <div>\r\n-            <h2 style={{opacity:this.state.opacity}}>我要消失了</h2>\r\n+            <h2 style={{ opacity: this.state.opacity }}>我要消失了</h2>\r\n             <button onClick={this.death}>卸载组件</button>\r\n           </div>\r\n         )\r\n       }\r\n"
+                },
+                {
+                    "date": 1671682543899,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,11 @@\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Life extends React.Component{\r\n+      state = {\r\n+        opacity:1\r\n+      }\r\n       death = ()=>{\r\n         ReactDOM.unmountComponentAtNode(document.getElementById('test'))\r\n       }\r\n       componentDidMount(){\r\n"
+                }
+            ],
+            "date": 1671682101311,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class Life\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "06_组件三大实例1_state/2_state的简写.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1671612148943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671612156867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,12 +31,8 @@\n       state = {\r\n           isHot: true,\r\n         }\r\n        changeWeather=()=> {\r\n-        // 不能直接修改state的值\r\n-        // this.state.isHot = !this.state.isHot\r\n-\r\n-        //通过setState修改\r\n         const isHot = this.state.isHot\r\n         this.setState({ isHot: !isHot })\r\n       }\r\n       render() {\r\n"
+                }
+            ],
+            "date": 1671612148943,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class MyComponent extends React.Component {\r\n      // constructor(props){\r\n      //   super(props)\r\n      //   this.state = {\r\n      //     isHot:true,\r\n      //   }\r\n      //   this.changeWeather = this.changeWeather.bind(this)\r\n      // }\r\n      state = {\r\n          isHot: true,\r\n        }\r\n       changeWeather=()=> {\r\n        // 不能直接修改state的值\r\n        // this.state.isHot = !this.state.isHot\r\n\r\n        //通过setState修改\r\n        const isHot = this.state.isHot\r\n        this.setState({ isHot: !isHot })\r\n      }\r\n      render() {\r\n        const {isHot} = this.state\r\n        return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n      }\r\n     \r\n    }\r\n    ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

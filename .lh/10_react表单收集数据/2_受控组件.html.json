@@ -1,0 +1,34 @@
+{
+    "sourceFile": "10_react表单收集数据/2_受控组件.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1671678750213,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671678762220,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n       }\r\n       render(){\r\n         return (\r\n           <form onSubmit={this.handleSubmit}>\r\n-            用户名：<input type=\"text\" name=\"username\" />  \r\n+            用户名：<input onChange={this.} type=\"text\" name=\"username\" />  \r\n             密码：<input type=\"text\" name=\"password\" />  \r\n             <button>登录</button>\r\n           </form>\r\n         )\r\n"
+                },
+                {
+                    "date": 1671678800314,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,10 +27,10 @@\n       }\r\n       render(){\r\n         return (\r\n           <form onSubmit={this.handleSubmit}>\r\n-            用户名：<input onChange={this.} type=\"text\" name=\"username\" />  \r\n-            密码：<input type=\"text\" name=\"password\" />  \r\n+            用户名：<input onChange={this.saveUsername} type=\"text\" name=\"username\" />  \r\n+            密码：<input onChange={this.savePassword} type=\"text\" name=\"password\" />  \r\n             <button>登录</button>\r\n           </form>\r\n         )\r\n       }\r\n"
+                },
+                {
+                    "date": 1671678868766,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,14 @@\n         event.preventDefault();\r\n         const {username,password} = this\r\n         alert(`用户名${username.value},密码${password.value}`)\r\n       }\r\n+      saveUsername = (event)=>{\r\n+        this.setState({username:event.target.value})\r\n+      }\r\n+      savePassword = (event) => {\r\n+        this.setState({ password: event.target.value })\r\n+      }\r\n       render(){\r\n         return (\r\n           <form onSubmit={this.handleSubmit}>\r\n             用户名：<input onChange={this.saveUsername} type=\"text\" name=\"username\" />  \r\n"
+                },
+                {
+                    "date": 1671678876824,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,10 +21,10 @@\n   <script type=\"text/babel\">\r\n     class Login extends React.Component{\r\n       handleSubmit = (event)=>{\r\n         event.preventDefault();\r\n-        const {username,password} = this\r\n-        alert(`用户名${username.value},密码${password.value}`)\r\n+        const {username,password} = this.state\r\n+        alert(`用户名${username},密码${password}`)\r\n       }\r\n       saveUsername = (event)=>{\r\n         this.setState({username:event.target.value})\r\n       }\r\n"
+                }
+            ],
+            "date": 1671678750213,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class Login extends React.Component{\r\n      handleSubmit = (event)=>{\r\n        event.preventDefault();\r\n        const {username,password} = this\r\n        alert(`用户名${username.value},密码${password.value}`)\r\n      }\r\n      render(){\r\n        return (\r\n          <form onSubmit={this.handleSubmit}>\r\n            用户名：<input type=\"text\" name=\"username\" />  \r\n            密码：<input type=\"text\" name=\"password\" />  \r\n            <button>登录</button>\r\n          </form>\r\n        )\r\n      }\r\n    }\r\n    ReactDOM.render(<Login/>,document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

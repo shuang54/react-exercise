@@ -1,0 +1,130 @@
+{
+    "sourceFile": "12_组件的生命周期/2_react生命周期.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 28,
+            "patches": [
+                {
+                    "date": 1671686331066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671686394064,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,11 +19,15 @@\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Count extends React.Component{\r\n-      constructor(){\r\n-        \r\n+      constructor(props){\r\n+        super(props)\r\n+        console.log('Count---constructor');\r\n+        this.state = {count:1}\r\n       }\r\n+\r\n+      \r\n     }\r\n   </script>\r\n </body>\r\n \r\n"
+                },
+                {
+                    "date": 1671686403103,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,11 @@\n         console.log('Count---constructor');\r\n         this.state = {count:1}\r\n       }\r\n \r\n-      \r\n+      add = ()=>{\r\n+        \r\n+      }\r\n     }\r\n   </script>\r\n </body>\r\n \r\n"
+                },
+                {
+                    "date": 1671686445410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,10 +26,19 @@\n         this.state = {count:1}\r\n       }\r\n \r\n       add = ()=>{\r\n-        \r\n+        const {count} = this.state\r\n+        this.setState({count:count+1})\r\n       }\r\n+\r\n+      render(){\r\n+        return (\r\n+          <div>\r\n+            <h2></h2>  \r\n+          </div>\r\n+        )\r\n+      }\r\n     }\r\n   </script>\r\n </body>\r\n \r\n"
+                },
+                {
+                    "date": 1671686511437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,13 +33,15 @@\n \r\n       render(){\r\n         return (\r\n           <div>\r\n-            <h2></h2>  \r\n+            <h2>Count为{this.state.count}</h2>  \r\n+            <button onClick={this.add}>count加1</button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n+    ReactDOM.render(<Count/>,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671686563731,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,8 +29,13 @@\n       add = ()=>{\r\n         const {count} = this.state\r\n         this.setState({count:count+1})\r\n       }\r\n+      \r\n+      // 组件将要挂载\r\n+      componentWill\r\n+      // 组件挂在完成\r\n+      // 组件卸载\r\n \r\n       render(){\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671686620480,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,11 +31,19 @@\n         this.setState({count:count+1})\r\n       }\r\n       \r\n       // 组件将要挂载\r\n-      componentWill\r\n+      componentWillMount(){\r\n+        console.log('Count---componentWillMount');\r\n+      }\r\n       // 组件挂在完成\r\n+      componentDidMount(){\r\n+        console.log('Count---componentDidMount');\r\n+      }\r\n       // 组件卸载\r\n+      componentDidUnmount(){\r\n+        console.log('Count---componentDidUnmount');\r\n+      }\r\n \r\n       render(){\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671686645198,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,10 +39,10 @@\n       componentDidMount(){\r\n         console.log('Count---componentDidMount');\r\n       }\r\n       // 组件卸载\r\n-      componentDidUnmount(){\r\n-        console.log('Count---componentDidUnmount');\r\n+      componentWillUnmount(){\r\n+        console.log('Count---componentWillUnmount');\r\n       }\r\n \r\n       render(){\r\n         return (\r\n"
+                },
+                {
+                    "date": 1671686664394,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,8 +44,9 @@\n         console.log('Count---componentWillUnmount');\r\n       }\r\n \r\n       render(){\r\n+        console.log('Count---render');\r\n         return (\r\n           <div>\r\n             <h2>Count为{this.state.count}</h2>  \r\n             <button onClick={this.add}>count加1</button>\r\n"
+                },
+                {
+                    "date": 1671687246108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,8 +43,12 @@\n       componentWillUnmount(){\r\n         console.log('Count---componentWillUnmount');\r\n       }\r\n \r\n+      // 组件是否更新的阀门\r\n+      shouldComponent\r\n+      // 组件更新之前\r\n+      // 组件更新之后\r\n       render(){\r\n         console.log('Count---render');\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671687302142,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -44,11 +44,20 @@\n         console.log('Count---componentWillUnmount');\r\n       }\r\n \r\n       // 组件是否更新的阀门\r\n-      shouldComponent\r\n+      shouldComponentUpdate(){\r\n+        console.log('Count---shouldComponentUpdate');\r\n+      }\r\n       // 组件更新之前\r\n+      componentWillUpdate(){\r\n+        console.log('Count---componentWillUpdate');\r\n+      }\r\n       // 组件更新之后\r\n+      componentDidUpdate(){\r\n+        console.log('Count---');\r\n+      }\r\n+\r\n       render(){\r\n         console.log('Count---render');\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671687368062,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,16 +46,17 @@\n \r\n       // 组件是否更新的阀门\r\n       shouldComponentUpdate(){\r\n         console.log('Count---shouldComponentUpdate');\r\n+        return true;\r\n       }\r\n       // 组件更新之前\r\n       componentWillUpdate(){\r\n         console.log('Count---componentWillUpdate');\r\n       }\r\n       // 组件更新之后\r\n       componentDidUpdate(){\r\n-        console.log('Count---');\r\n+        console.log('Count---componentDidUpdate');\r\n       }\r\n \r\n       render(){\r\n         console.log('Count---render');\r\n"
+                },
+                {
+                    "date": 1671687630585,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,9 +56,10 @@\n       // 组件更新之后\r\n       componentDidUpdate(){\r\n         console.log('Count---componentDidUpdate');\r\n       }\r\n-\r\n+      // 强制更新\r\n+      \r\n       render(){\r\n         console.log('Count---render');\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671687644337,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,8 +30,12 @@\n         const {count} = this.state\r\n         this.setState({count:count+1})\r\n       }\r\n       \r\n+      // 强制更新\r\n+      force = () =>{\r\n+        \r\n+      }\r\n       // 组件将要挂载\r\n       componentWillMount(){\r\n         console.log('Count---componentWillMount');\r\n       }\r\n@@ -56,10 +60,8 @@\n       // 组件更新之后\r\n       componentDidUpdate(){\r\n         console.log('Count---componentDidUpdate');\r\n       }\r\n-      // 强制更新\r\n-      \r\n       render(){\r\n         console.log('Count---render');\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671687649389,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n       }\r\n       \r\n       // 强制更新\r\n       force = () =>{\r\n-        \r\n+        ReactDOm.\r\n       }\r\n       // 组件将要挂载\r\n       componentWillMount(){\r\n         console.log('Count---componentWillMount');\r\n"
+                },
+                {
+                    "date": 1671687657532,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n       }\r\n       \r\n       // 强制更新\r\n       force = () =>{\r\n-        ReactDOm.\r\n+        ReactDOM.unmount\r\n       }\r\n       // 组件将要挂载\r\n       componentWillMount(){\r\n         console.log('Count---componentWillMount');\r\n"
+                },
+                {
+                    "date": 1671687668244,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n       }\r\n       \r\n       // 强制更新\r\n       force = () =>{\r\n-        ReactDOM.unmount\r\n+        ReactDOM.unmountComponentAtNode(document)\r\n       }\r\n       // 组件将要挂载\r\n       componentWillMount(){\r\n         console.log('Count---componentWillMount');\r\n"
+                },
+                {
+                    "date": 1671687678525,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n       }\r\n       \r\n       // 强制更新\r\n       force = () =>{\r\n-        ReactDOM.unmountComponentAtNode(document)\r\n+        this.force\r\n       }\r\n       // 组件将要挂载\r\n       componentWillMount(){\r\n         console.log('Count---componentWillMount');\r\n"
+                },
+                {
+                    "date": 1671687691184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n       }\r\n       \r\n       // 强制更新\r\n       force = () =>{\r\n-        this.force\r\n+        this.forceUpdate()\r\n       }\r\n       // 组件将要挂载\r\n       componentWillMount(){\r\n         console.log('Count---componentWillMount');\r\n@@ -66,8 +66,9 @@\n         return (\r\n           <div>\r\n             <h2>Count为{this.state.count}</h2>  \r\n             <button onClick={this.add}>count加1</button>\r\n+            <button onClick={this.force}>count加1</button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671687697179,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,9 +66,9 @@\n         return (\r\n           <div>\r\n             <h2>Count为{this.state.count}</h2>  \r\n             <button onClick={this.add}>count加1</button>\r\n-            <button onClick={this.force}>count加1</button>\r\n+            <button onClick={this.force}>强制更新</button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671688759502,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,15 +60,24 @@\n       // 组件更新之后\r\n       componentDidUpdate(){\r\n         console.log('Count---componentDidUpdate');\r\n       }\r\n-      render(){\r\n+      // render(){\r\n+      //   console.log('Count---render');\r\n+      //   return (\r\n+      //     <div>\r\n+      //       <h2>Count为{this.state.count}</h2>  \r\n+      //       <button onClick={this.add}>count加1</button>\r\n+      //       <button onClick={this.force}>强制更新</button>\r\n+      //     </div>\r\n+      //   )\r\n+      // }\r\n+       render() {\r\n         console.log('Count---render');\r\n         return (\r\n           <div>\r\n-            <h2>Count为{this.state.count}</h2>  \r\n-            <button onClick={this.add}>count加1</button>\r\n-            <button onClick={this.force}>强制更新</button>\r\n+            <h2>我是A组件</h2>\r\n+            <button></button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671688854860,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n       }\r\n \r\n       add = ()=>{\r\n         const {count} = this.state\r\n-        this.setState({count:count+1})\r\n+        this.setState({count:count+1,car:true})\r\n       }\r\n       \r\n       // 强制更新\r\n       force = () =>{\r\n@@ -70,14 +70,18 @@\n       //       <button onClick={this.force}>强制更新</button>\r\n       //     </div>\r\n       //   )\r\n       // }\r\n+      changeCar = ()=>{\r\n+        const {car} = this.state\r\n+        this.setState({car:!car})\r\n+      }\r\n        render() {\r\n         console.log('Count---render');\r\n         return (\r\n           <div>\r\n             <h2>我是A组件</h2>\r\n-            <button></button>\r\n+            <button onClick={this.changeCar}>换车</button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671688945681,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,33 +60,78 @@\n       // 组件更新之后\r\n       componentDidUpdate(){\r\n         console.log('Count---componentDidUpdate');\r\n       }\r\n-      // render(){\r\n-      //   console.log('Count---render');\r\n-      //   return (\r\n-      //     <div>\r\n-      //       <h2>Count为{this.state.count}</h2>  \r\n-      //       <button onClick={this.add}>count加1</button>\r\n-      //       <button onClick={this.force}>强制更新</button>\r\n-      //     </div>\r\n-      //   )\r\n-      // }\r\n-      changeCar = ()=>{\r\n-        const {car} = this.state\r\n-        this.setState({car:!car})\r\n-      }\r\n-       render() {\r\n+      render(){\r\n         console.log('Count---render');\r\n         return (\r\n           <div>\r\n+            <h2>Count为{this.state.count}</h2>  \r\n+            <button onClick={this.add}>count加1</button>\r\n+            <button onClick={this.force}>强制更新</button>\r\n+          </div>\r\n+        )\r\n+      }\r\n+      \r\n+    }\r\n+    class A extends React.Component{\r\n+      changeCar = () => {\r\n+        const { car } = this.state\r\n+        this.setState({ car: !car })\r\n+      }\r\n+      constructor(props) {\r\n+        super(props)\r\n+        console.log('Count---constructor');\r\n+        this.state = { count: 1 }\r\n+      }\r\n+\r\n+      add = () => {\r\n+        const { count } = this.state\r\n+        this.setState({ count: count + 1, car: true })\r\n+      }\r\n+\r\n+      // 强制更新\r\n+      force = () => {\r\n+        this.forceUpdate()\r\n+      }\r\n+      // 组件将要挂载\r\n+      componentWillMount() {\r\n+        console.log('A---componentWillMount');\r\n+      }\r\n+      // 组件挂在完成\r\n+      componentDidMount() {\r\n+        console.log('A---componentDidMount');\r\n+      }\r\n+      // 组件卸载\r\n+      componentWillUnmount() {\r\n+        console.log('A---componentWillUnmount');\r\n+      }\r\n+\r\n+      // 组件是否更新的阀门\r\n+      shouldComponentUpdate() {\r\n+        console.log('A---shouldComponentUpdate');\r\n+        return true;\r\n+      }\r\n+      // 组件更新之前\r\n+      componentWillUpdate() {\r\n+        console.log('A---componentWillUpdate');\r\n+      }\r\n+      // 组件更新之后\r\n+      componentDidUpdate() {\r\n+        console.log('A---componentDidUpdate');\r\n+      }\r\n+      render() {\r\n+        console.log('A---render');\r\n+        return (\r\n+          <div>\r\n             <h2>我是A组件</h2>\r\n             <button onClick={this.changeCar}>换车</button>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n-    ReactDOM.render(<Count/>,document.getElementById('test'))\r\n+    // ReactDOM.render(<Count/>,document.getElementById('test'))\r\n+    ReactDOM.render(<A/>,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671688978581,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,27 +73,18 @@\n       }\r\n       \r\n     }\r\n     class A extends React.Component{\r\n-      changeCar = () => {\r\n-        const { car } = this.state\r\n-        this.setState({ car: !car })\r\n-      }\r\n+\r\n       constructor(props) {\r\n         super(props)\r\n         console.log('Count---constructor');\r\n-        this.state = { count: 1 }\r\n+        this.state = { car:true}\r\n       }\r\n-\r\n-      add = () => {\r\n-        const { count } = this.state\r\n-        this.setState({ count: count + 1, car: true })\r\n+       changeCar = () => {\r\n+        const { car } = this.state\r\n+        this.setState({ car: !car })\r\n       }\r\n-\r\n-      // 强制更新\r\n-      force = () => {\r\n-        this.forceUpdate()\r\n-      }\r\n       // 组件将要挂载\r\n       componentWillMount() {\r\n         console.log('A---componentWillMount');\r\n       }\r\n"
+                },
+                {
+                    "date": 1671689075840,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -119,8 +119,49 @@\n           </div>\r\n         )\r\n       }\r\n     }\r\n+   class B extends React.Component {\r\n+\r\n+      constructor(props) {\r\n+        super(props)\r\n+        console.log('Count---constructor');\r\n+      }\r\n+      // 组件将要挂载\r\n+      componentWillMount() {\r\n+        console.log('B---componentWillMount');\r\n+      }\r\n+      // 组件挂在完成\r\n+      componentDidMount() {\r\n+        console.log('B---componentDidMount');\r\n+      }\r\n+      // 组件卸载\r\n+      componentWillUnmount() {\r\n+        console.log('B---componentWillUnmount');\r\n+      }\r\n+\r\n+      // 组件是否更新的阀门\r\n+      shouldComponentUpdate() {\r\n+        console.log('B---shouldComponentUpdate');\r\n+        return true;\r\n+      }\r\n+      // 组件更新之前\r\n+      componentWillUpdate() {\r\n+        console.log('B---componentWillUpdate');\r\n+      }\r\n+      // 组件更新之后\r\n+      componentDidUpdate() {\r\n+        console.log('B---componentDidUpdate');\r\n+      }\r\n+      render() {\r\n+        console.log('B---render');\r\n+        return (\r\n+          <div>\r\n+            <h2>我是B组件,我开{this.props.car?'宝马':'奔驰'}</h2>\r\n+          </div>\r\n+        )\r\n+      }\r\n+    }\r\n     // ReactDOM.render(<Count/>,document.getElementById('test'))\r\n     ReactDOM.render(<A/>,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n"
+                },
+                {
+                    "date": 1671689098839,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -115,8 +115,9 @@\n         return (\r\n           <div>\r\n             <h2>我是A组件</h2>\r\n             <button onClick={this.changeCar}>换车</button>\r\n+            <B car={this.state.car}/>\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671689150045,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,9 +76,9 @@\n     class A extends React.Component{\r\n \r\n       constructor(props) {\r\n         super(props)\r\n-        console.log('Count---constructor');\r\n+        console.log('A---constructor');\r\n         this.state = { car:true}\r\n       }\r\n        changeCar = () => {\r\n         const { car } = this.state\r\n@@ -124,9 +124,9 @@\n    class B extends React.Component {\r\n \r\n       constructor(props) {\r\n         super(props)\r\n-        console.log('Count---constructor');\r\n+        console.log('B---constructor');\r\n       }\r\n       // 组件将要挂载\r\n       componentWillMount() {\r\n         console.log('B---componentWillMount');\r\n"
+                },
+                {
+                    "date": 1671689273323,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -152,8 +152,13 @@\n       // 组件更新之后\r\n       componentDidUpdate() {\r\n         console.log('B---componentDidUpdate');\r\n       }\r\n+      \r\n+     // 组件将要接受新的数据\r\n+     componentWillReceiveProps() {\r\n+       console.log('B---componentWillReceiveProps');\r\n+     }\r\n       render() {\r\n         console.log('B---render');\r\n         return (\r\n           <div>\r\n"
+                },
+                {
+                    "date": 1671689350886,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -154,9 +154,9 @@\n         console.log('B---componentDidUpdate');\r\n       }\r\n       \r\n      // 组件将要接受新的数据\r\n-     componentWillReceiveProps() {\r\n+     componentWillReceiveProps(props) {\r\n        console.log('B---componentWillReceiveProps');\r\n      }\r\n       render() {\r\n         console.log('B---render');\r\n"
+                }
+            ],
+            "date": 1671686331066,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class Count extends React.Component{\r\n      constructor(){\r\n        \r\n      }\r\n    }\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

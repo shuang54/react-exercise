@@ -1,0 +1,18 @@
+{
+    "sourceFile": "react_test/react_staging/src/components/Hello/index.jsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1671705999569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1671705999569,
+            "name": "Commit-0",
+            "content": "import React,{Component} from 'react'\r\nimport './index.css'\r\n\r\nexport default class Hello extends Component{\r\n  render(){\r\n    return (\r\n      <div className='hell'>\r\n        Hello,React\r\n      </div>\r\n    )\r\n  }\r\n}"
+        }
+    ]
+}

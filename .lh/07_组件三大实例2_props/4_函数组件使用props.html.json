@@ -1,0 +1,26 @@
+{
+    "sourceFile": "07_组件三大实例2_props/4_函数组件使用props.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1671619882869,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671619929716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,31 +21,18 @@\n   <!-- 限制props的类型  -->\r\n   <script   src=\"../js/prop-types.js\"></script>\r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n-    class MyComponent extends React.Component {\r\n-      \r\n-    // 限制props类型\r\n-    static propTypes = {\r\n-        name: PropTypes.string.isRequired,\r\n-        sex: PropTypes.string,\r\n-        age: PropTypes.number\r\n-      }\r\n-    // 提供props默认值\r\n-    static defaultProps = {\r\n-        sex: '男',\r\n-        age: 18\r\n-      }\r\n-      render() {\r\n-        const {name,sex,age} = this.props\r\n-        return (\r\n-          <ul>\r\n-            <li>姓名：{name}</li>\r\n-            <li>性别：{ sex }</li>\r\n-            <li>年龄：{ age }</li>\r\n-          </ul>\r\n-        )\r\n-      }\r\n+\r\n+    function MyComponent(props){\r\n+      const { name, sex, age } = props\r\n+      return (\r\n+        <ul>\r\n+          <li>姓名：{name}</li>\r\n+          <li>性别：{sex}</li>\r\n+          <li>年龄：{age}</li>\r\n+        </ul>\r\n+      )\r\n     }\r\n     const p = {name:'李四',sex:'男',age:33}\r\n     // 简写\r\n     ReactDOM.render(<MyComponent {...p} />, document.getElementById('test'))\r\n"
+                },
+                {
+                    "date": 1671619941776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n           <li>年龄：{age}</li>\r\n         </ul>\r\n       )\r\n     }\r\n-    const p = {name:'李四',sex:'男',age:33}\r\n+    const p = {name:'李四',sex:'男',age:23}\r\n     // 简写\r\n     ReactDOM.render(<MyComponent {...p} />, document.getElementById('test'))\r\n     // ReactDOM.render(<MyComponent name=\"张三\" sex=\"女\" age={47} />, document.getElementById('test2'))\r\n \r\n"
+                }
+            ],
+            "date": 1671619882869,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <div id=\"test2\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!-- 限制props的类型  -->\r\n  <script   src=\"../js/prop-types.js\"></script>\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class MyComponent extends React.Component {\r\n      \r\n    // 限制props类型\r\n    static propTypes = {\r\n        name: PropTypes.string.isRequired,\r\n        sex: PropTypes.string,\r\n        age: PropTypes.number\r\n      }\r\n    // 提供props默认值\r\n    static defaultProps = {\r\n        sex: '男',\r\n        age: 18\r\n      }\r\n      render() {\r\n        const {name,sex,age} = this.props\r\n        return (\r\n          <ul>\r\n            <li>姓名：{name}</li>\r\n            <li>性别：{ sex }</li>\r\n            <li>年龄：{ age }</li>\r\n          </ul>\r\n        )\r\n      }\r\n    }\r\n    const p = {name:'李四',sex:'男',age:33}\r\n    // 简写\r\n    ReactDOM.render(<MyComponent {...p} />, document.getElementById('test'))\r\n    // ReactDOM.render(<MyComponent name=\"张三\" sex=\"女\" age={47} />, document.getElementById('test2'))\r\n\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

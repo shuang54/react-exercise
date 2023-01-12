@@ -1,0 +1,30 @@
+{
+    "sourceFile": "react_test/react_staging/public/index.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1671704358288,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671704364817,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n <head>\r\n   <meta charset=\"UTF-8\">\r\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n-  <title>Document</title>\r\n+  <title>react脚手架</title>\r\n </head>\r\n <body>\r\n   \r\n </body>\r\n"
+                },
+                {
+                    "date": 1671704393803,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,10 @@\n   <meta charset=\"UTF-8\">\r\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n   <title>react脚手架</title>\r\n+  <link rel=\"icon\" href=\"%PUBLIC_URL%/favicon.ico\" />\r\n </head>\r\n <body>\r\n-  \r\n+  <div id=\"app\"></div>\r\n </body>\r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671704639575,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,7 +7,7 @@\n   <title>react脚手架</title>\r\n   <link rel=\"icon\" href=\"%PUBLIC_URL%/favicon.ico\" />\r\n </head>\r\n <body>\r\n-  <div id=\"app\"></div>\r\n+  <div id=\"root\"></div>\r\n </body>\r\n </html>\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1671704358288,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Document</title>\r\n</head>\r\n<body>\r\n  \r\n</body>\r\n</html>"
+        }
+    ]
+}

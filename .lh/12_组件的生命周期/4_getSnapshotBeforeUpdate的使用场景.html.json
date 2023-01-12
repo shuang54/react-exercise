@@ -1,0 +1,34 @@
+{
+    "sourceFile": "12_组件的生命周期/4_getSnapshotBeforeUpdate的使用场景.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1671693261010,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671693422627,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,30 @@\n   <script src=\"../js/17.0.1/react-dom.development.js\"></script>\r\n   <!-- 将jsx转为js -->\r\n   <script type=\"text/javascript\" src=\"../js/17.0.1/babel.min.js\"></script>\r\n   <script type=\"text/babel\">\r\n-    class NewsList\r\n+    class NewsList extends React.Component{\r\n+      state = {\r\n+        newsArr:[]\r\n+      }\r\n+      componentDidMount(){\r\n+        setInterval(()=>{\r\n+          const {newsArr} = this.state\r\n+          const news = '新闻'+(newsArr.length+1)\r\n+          this.setState({newsArr:[news,...newsArr]})\r\n+        },1000)\r\n+      }\r\n+      render(){\r\n+        return (\r\n+          <div>\r\n+            <ul>\r\n+              <li></li>\r\n+            </ul>  \r\n+          </div>\r\n+        )\r\n+      }\r\n+    }\r\n+    ReactDOM.render(<NewsList/>,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671693551448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,21 @@\n   <meta charset=\"UTF-8\">\r\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n   <title>Hello</title>\r\n+  <style>\r\n+    .list{\r\n+      width: 300px;\r\n+      height: 500px;\r\n+      background-color: aqua;\r\n+      overflow: auto;\r\n+    }\r\n+    .news{\r\n+      width: 100%;\r\n+      height: 30px;\r\n+      \r\n+    }\r\n+  </style>\r\n </head>\r\n \r\n <body>\r\n   <!-- 准备一个容器 -->\r\n@@ -30,12 +43,14 @@\n         },1000)\r\n       }\r\n       render(){\r\n         return (\r\n-          <div>\r\n-            <ul>\r\n-              <li></li>\r\n-            </ul>  \r\n+          <div className=\"list\">\r\n+            {\r\n+              this.state.newsArr.map((item,index)=>{\r\n+                return <div className=\"news\" key={index}>{item}</div>\r\n+              })\r\n+            }\r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671693983695,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     }\r\n     .news{\r\n       width: 100%;\r\n       height: 30px;\r\n-      \r\n+\r\n     }\r\n   </style>\r\n </head>\r\n \r\n@@ -41,11 +41,17 @@\n           const news = '新闻'+(newsArr.length+1)\r\n           this.setState({newsArr:[news,...newsArr]})\r\n         },1000)\r\n       }\r\n+      getSnapshotBeforeUpdate(){\r\n+        return this.refs.list.scrollHeight\r\n+      }\r\n+      componentDidUpdate(prevProps,prevState,height){\r\n+        this.refs.list.scrollTop += this.refs.list.scrollHeight - height\r\n+      }\r\n       render(){\r\n         return (\r\n-          <div className=\"list\">\r\n+          <div className=\"list\" ref=\"list\">\r\n             {\r\n               this.state.newsArr.map((item,index)=>{\r\n                 return <div className=\"news\" key={index}>{item}</div>\r\n               })\r\n"
+                },
+                {
+                    "date": 1671693990291,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n   <title>Hello</title>\r\n   <style>\r\n     .list{\r\n       width: 300px;\r\n-      height: 500px;\r\n+      height: 300px;\r\n       background-color: aqua;\r\n       overflow: auto;\r\n     }\r\n     .news{\r\n"
+                }
+            ],
+            "date": 1671693261010,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/17.0.1/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/17.0.1/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/17.0.1/babel.min.js\"></script>\r\n  <script type=\"text/babel\">\r\n    class NewsList\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

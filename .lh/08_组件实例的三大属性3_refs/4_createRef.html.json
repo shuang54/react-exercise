@@ -1,0 +1,34 @@
+{
+    "sourceFile": "08_组件实例的三大属性3_refs/4_createRef.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1671623907562,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671623916121,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n   <script src=\"../js/prop-types.js\"></script>\r\n   <!-- 使用ref内联函数回调，更新时会执行两次  -->\r\n   <script type=\"text/babel\">\r\n     class Demo extends React.Component{\r\n-      \r\n+      myRef = \r\n       render(){\r\n         return (\r\n           <div>\r\n             <input ref={this.saveInput} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n"
+                },
+                {
+                    "date": 1671623923111,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n   <script src=\"../js/prop-types.js\"></script>\r\n   <!-- 使用ref内联函数回调，更新时会执行两次  -->\r\n   <script type=\"text/babel\">\r\n     class Demo extends React.Component{\r\n-      myRef = \r\n+      myRef = React.createRef()\r\n       render(){\r\n         return (\r\n           <div>\r\n             <input ref={this.saveInput} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n"
+                },
+                {
+                    "date": 1671623948837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,16 +25,16 @@\n       myRef = React.createRef()\r\n       render(){\r\n         return (\r\n           <div>\r\n-            <input ref={this.saveInput} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n+            <input ref={this.myRef} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button><br/>\r\n           </div>\r\n         )\r\n       }\r\n       alertData = ()=>{\r\n-        const {input1} = this\r\n-        alert(input1.value)\r\n+        \r\n+        alert(myRef.current.value)\r\n       }\r\n     }\r\n     ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n   </script>\r\n"
+                },
+                {
+                    "date": 1671623995975,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n         )\r\n       }\r\n       alertData = ()=>{\r\n         \r\n-        alert(myRef.current.value)\r\n+        alert(this.myRef.current.value)\r\n       }\r\n     }\r\n     ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n   </script>\r\n"
+                }
+            ],
+            "date": 1671623907562,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!-- 限制props的类型  -->\r\n  <script src=\"../js/prop-types.js\"></script>\r\n  <!-- 使用ref内联函数回调，更新时会执行两次  -->\r\n  <script type=\"text/babel\">\r\n    class Demo extends React.Component{\r\n      \r\n      render(){\r\n        return (\r\n          <div>\r\n            <input ref={this.saveInput} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n            <button onClick={this.alertData}>点击提示左侧数据</button><br/>\r\n          </div>\r\n        )\r\n      }\r\n      alertData = ()=>{\r\n        const {input1} = this\r\n        alert(input1.value)\r\n      }\r\n    }\r\n    ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

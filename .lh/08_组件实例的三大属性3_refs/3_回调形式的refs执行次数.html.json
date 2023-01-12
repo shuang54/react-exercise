@@ -1,0 +1,42 @@
+{
+    "sourceFile": "08_组件实例的三大属性3_refs/3_回调形式的refs执行次数.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 6,
+            "patches": [
+                {
+                    "date": 1671623316352,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671623400773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,16 +25,22 @@\n       state = {\r\n         isHot:true\r\n       }\r\n       render(){\r\n+        const {isHot} = this.state\r\n         return (\r\n           <div>\r\n             <input ref={currentNode=>this.input1 = currentNode} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button><br/>\r\n             <h2>今天天气很{isHot?'炎热':'寒冷'}</h2>\r\n+            <button onClick={this.changeWeather}>切换天气</button>\r\n           </div>\r\n         )\r\n       }\r\n+      changeWeather = ()=>{\r\n+        const {isHot} = this.state\r\n+        this.set\r\n+      }\r\n       alertData = ()=>{\r\n         const {input1} = this\r\n         alert(input1.value)\r\n       }\r\n"
+                },
+                {
+                    "date": 1671623419479,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n         )\r\n       }\r\n       changeWeather = ()=>{\r\n         const {isHot} = this.state\r\n-        this.set\r\n+        this.setState({isHot:!isHot})\r\n       }\r\n       alertData = ()=>{\r\n         const {input1} = this\r\n         alert(input1.value)\r\n"
+                },
+                {
+                    "date": 1671623448294,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n       render(){\r\n         const {isHot} = this.state\r\n         return (\r\n           <div>\r\n-            <input ref={currentNode=>this.input1 = currentNode} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n+            <input ref={this.saveInput(c)} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button><br/>\r\n             <h2>今天天气很{isHot?'炎热':'寒冷'}</h2>\r\n             <button onClick={this.changeWeather}>切换天气</button>\r\n           </div>\r\n"
+                },
+                {
+                    "date": 1671623459077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n       render(){\r\n         const {isHot} = this.state\r\n         return (\r\n           <div>\r\n-            <input ref={this.saveInput(c)} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n+            <input ref={this.saveInput} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button><br/>\r\n             <h2>今天天气很{isHot?'炎热':'寒冷'}</h2>\r\n             <button onClick={this.changeWeather}>切换天气</button>\r\n           </div>\r\n"
+                },
+                {
+                    "date": 1671623475790,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,8 +35,11 @@\n             <button onClick={this.changeWeather}>切换天气</button>\r\n           </div>\r\n         )\r\n       }\r\n+      saveInput = (c)=>{\r\n+        \r\n+      }\r\n       changeWeather = ()=>{\r\n         const {isHot} = this.state\r\n         this.setState({isHot:!isHot})\r\n       }\r\n"
+                },
+                {
+                    "date": 1671623481396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,9 @@\n           </div>\r\n         )\r\n       }\r\n       saveInput = (c)=>{\r\n-        \r\n+        this.input1 = c\r\n       }\r\n       changeWeather = ()=>{\r\n         const {isHot} = this.state\r\n         this.setState({isHot:!isHot})\r\n"
+                }
+            ],
+            "date": 1671623316352,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!-- 限制props的类型  -->\r\n  <script src=\"../js/prop-types.js\"></script>\r\n  <!-- 使用ref内联函数回调，更新时会执行两次  -->\r\n  <script type=\"text/babel\">\r\n    class Demo extends React.Component{\r\n      state = {\r\n        isHot:true\r\n      }\r\n      render(){\r\n        return (\r\n          <div>\r\n            <input ref={currentNode=>this.input1 = currentNode} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n            <button onClick={this.alertData}>点击提示左侧数据</button><br/>\r\n            <h2>今天天气很{isHot?'炎热':'寒冷'}</h2>\r\n          </div>\r\n        )\r\n      }\r\n      alertData = ()=>{\r\n        const {input1} = this\r\n        alert(input1.value)\r\n      }\r\n      alertData2 = () => {\r\n        const { input2 } = this\r\n        alert(input2.value)\r\n      }\r\n    }\r\n    ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

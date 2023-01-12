@@ -1,0 +1,34 @@
+{
+    "sourceFile": "03_jsx语法规则/jsx语法规则.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1671598826848,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671599086460,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,10 +19,22 @@\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n \r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n-    const VDOM = <h1>Hello React</h1>\r\n-    ReactDOM.render(VDOM, document.getElementById('test'))\r\n+    const myId = 'shuang'\r\n+    const myData = 'Hello,creaT'\r\n+\r\n+    // 1.创建虚拟DOM\r\n+    const VDOM = (\r\n+      <div>\r\n+        <h2 className=\"title\" id={myId.toUpperCase()}>\r\n+          <span>{myData.toLowerCase()}</span>\r\n+        </h2>  \r\n+        <input type=\"text\" />\r\n+      </div>\r\n+    )\r\n+    // 2.渲染虚拟DOM到页面\r\n+    ReactDOM.render(VDOM,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671599098983,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n     // 1.创建虚拟DOM\r\n     const VDOM = (\r\n       <div>\r\n         <h2 className=\"title\" id={myId.toUpperCase()}>\r\n-          <span>{myData.toLowerCase()}</span>\r\n+          <span>{myData.toUpperCase()}</span>\r\n         </h2>  \r\n         <input type=\"text\" />\r\n       </div>\r\n     )\r\n"
+                },
+                {
+                    "date": 1671599364841,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,8 +33,20 @@\n       </div>\r\n     )\r\n     // 2.渲染虚拟DOM到页面\r\n     ReactDOM.render(VDOM,document.getElementById('test'))\r\n+    /* \r\n+      jsx语法规则：\r\n+        1.定义虚拟DOM时，不要写引号\r\n+        2.标签中混入JS表达式要用{}\r\n+        3.样式的类名指定不要用class，使用className\r\n+        4.只有一个跟标签\r\n+        5.标签必须闭合\r\n+        6.内联样式，要用style={{ke:value}}的形式去写\r\n+        7.标签首字母\r\n+          (1).若小写字母开头，则将标签转为html中同名元素，若html没有对应的元素，则报错\r\n+          (2).若大写字母开头，react就去渲染对于的组件，若组件没有定义，则报错\r\n+    */\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671599423779,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n     // 1.创建虚拟DOM\r\n     const VDOM = (\r\n       <div>\r\n         <h2 className=\"title\" id={myId.toUpperCase()}>\r\n-          <span>{myData.toUpperCase()}</span>\r\n+          <span style={{color:'pink'}}>{myData.toUpperCase()}</span>\r\n         </h2>  \r\n         <input type=\"text\" />\r\n       </div>\r\n     )\r\n"
+                }
+            ],
+            "date": 1671598826848,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    const VDOM = <h1>Hello React</h1>\r\n    ReactDOM.render(VDOM, document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

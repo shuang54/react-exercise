@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello</title>
+</head>
+
+<body>
+  <!-- 准备一个容器 -->
+  <div id="test"></div>
+  <div id="test2"></div>
+  <!-- react核心库 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 支持react操作DOM -->
+  <script src="../js/react-dom.development.js"></script>
+  <!-- 将jsx转为js -->
+  <script type="text/javascript" src="../js/babel.min.js"></script>
+  <!-- 限制props的类型  -->
+  <script   src="../js/prop-types.js"></script>
+  <!--  -->
+  <script type="text/babel">
+    class MyComponent extends React.Component {
+      
+    // 限制props类型
+    static propTypes = {
+        name: PropTypes.string.isRequired,
+        sex: PropTypes.string,
+        age: PropTypes.number
+      }
+    // 提供props默认值
+    static defaultProps = {
+        sex: '男',
+        age: 18
+      }
+      render() {
+        const {name,sex,age} = this.props
+        return (
+          <ul>
+            <li>姓名：{name}</li>
+            <li>性别：{ sex }</li>
+            <li>年龄：{ age }</li>
+          </ul>
+        )
+      }
+    }
+    ReactDOM.render(<MyComponent name="张三" sex="女" age={47} />, document.getElementById('test'))
+    const p = {name:'李四',sex:'男',age:33}
+    // 简写
+    ReactDOM.render(<MyComponent {...p} />, document.getElementById('test2'))
+
+  </script>
+</body>
+
+</html>

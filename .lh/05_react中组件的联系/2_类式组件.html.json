@@ -1,0 +1,22 @@
+{
+    "sourceFile": "05_react中组件的联系/2_类式组件.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1671604697447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671604710517,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n \r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n-    class MyComponent{\r\n+    class MyComponent extends React.Component{\r\n       render(){\r\n         return <h2>我是用类定义的组件(使用与复杂组件的定义)</h2>\r\n       }\r\n     }\r\n"
+                }
+            ],
+            "date": 1671604697447,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class MyComponent{\r\n      render(){\r\n        return <h2>我是用类定义的组件(使用与复杂组件的定义)</h2>\r\n      }\r\n    }\r\n    ReactDOM.render(<MyComponent/>,document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

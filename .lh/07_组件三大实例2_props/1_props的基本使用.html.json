@@ -1,0 +1,34 @@
+{
+    "sourceFile": "07_组件三大实例2_props/1_props的基本使用.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1671612877699,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671612885013,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,22 +20,8 @@\n \r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class MyComponent extends React.Component {\r\n-      // constructor(props){\r\n-      //   super(props)\r\n-      //   this.state = {\r\n-      //     isHot:true,\r\n-      //   }\r\n-      //   this.changeWeather = this.changeWeather.bind(this)\r\n-      // }\r\n-      state = {\r\n-        isHot: true,\r\n-      }\r\n-      changeWeather = () => {\r\n-        const isHot = this.state.isHot\r\n-        this.setState({ isHot: !isHot })\r\n-      }\r\n       render() {\r\n         const { isHot } = this.state\r\n         return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'}</h2>\r\n       }\r\n"
+                },
+                {
+                    "date": 1671612910906,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,10 +21,15 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class MyComponent extends React.Component {\r\n       render() {\r\n-        const { isHot } = this.state\r\n-        return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'}</h2>\r\n+        return (\r\n+          <ul>\r\n+            <li>姓名：</li>\r\n+            <li>：</li>\r\n+            <li>姓名：</li>\r\n+          </ul>\r\n+        )\r\n       }\r\n \r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n"
+                },
+                {
+                    "date": 1671612981328,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,19 +21,20 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class MyComponent extends React.Component {\r\n       render() {\r\n+        const {name,sex,age} = this.props\r\n         return (\r\n           <ul>\r\n-            <li>姓名：</li>\r\n-            <li>：</li>\r\n-            <li>姓名：</li>\r\n+            <li>姓名：{name}</li>\r\n+            <li>性别：{ sex }</li>\r\n+            <li>年龄：{ age }</li>\r\n           </ul>\r\n         )\r\n       }\r\n \r\n     }\r\n-    ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n+    ReactDOM.render(<MyComponent name=\"张三\" sex=\"女\" age=\"38\" />, document.getElementById('test'))\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671613791710,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,11 +30,14 @@\n             <li>年龄：{ age }</li>\r\n           </ul>\r\n         )\r\n       }\r\n+    }\r\n+    const p = {name:'李四',sex:'男',age:'47'}\r\n+    // ReactDOM.render(<MyComponent name=\"张三\" sex=\"女\" age=\"38\" />, document.getElementById('test'))\r\n+    // 简写\r\n+    ReactDOM.render(<MyComponent {...p} />, document.getElementById('test'))\r\n \r\n-    }\r\n-    ReactDOM.render(<MyComponent name=\"张三\" sex=\"女\" age=\"38\" />, document.getElementById('test'))\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1671612877699,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class MyComponent extends React.Component {\r\n      // constructor(props){\r\n      //   super(props)\r\n      //   this.state = {\r\n      //     isHot:true,\r\n      //   }\r\n      //   this.changeWeather = this.changeWeather.bind(this)\r\n      // }\r\n      state = {\r\n        isHot: true,\r\n      }\r\n      changeWeather = () => {\r\n        const isHot = this.state.isHot\r\n        this.setState({ isHot: !isHot })\r\n      }\r\n      render() {\r\n        const { isHot } = this.state\r\n        return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'}</h2>\r\n      }\r\n\r\n    }\r\n    ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

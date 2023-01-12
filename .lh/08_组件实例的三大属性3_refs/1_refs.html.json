@@ -1,0 +1,74 @@
+{
+    "sourceFile": "08_组件实例的三大属性3_refs/1_refs.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 14,
+            "patches": [
+                {
+                    "date": 1671620638929,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671620686690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,16 @@\n   <!-- 限制props的类型  -->\r\n   <script src=\"../js/prop-types.js\"></script>\r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n-    class Demo extends React.Component\r\n+    class Demo extends React.Component{\r\n+      render(){\r\n+        return (\r\n+          <div></div>\r\n+        )\r\n+      }\r\n+    }\r\n+    ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671620705080,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,11 @@\n   <script type=\"text/babel\">\r\n     class Demo extends React.Component{\r\n       render(){\r\n         return (\r\n-          <div></div>\r\n+          <div>\r\n+            <input type=\"text\" pi/>  \r\n+          </div>\r\n         )\r\n       }\r\n     }\r\n     ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n"
+                },
+                {
+                    "date": 1671620712807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     class Demo extends React.Component{\r\n       render(){\r\n         return (\r\n           <div>\r\n-            <input type=\"text\" pi/>  \r\n+            <input type=\"text\" place/>  \r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671620719541,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     class Demo extends React.Component{\r\n       render(){\r\n         return (\r\n           <div>\r\n-            <input type=\"text\" place/>  \r\n+            <input type=\"text\" placeholder=\"\"/>  \r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671620743808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,11 @@\n     class Demo extends React.Component{\r\n       render(){\r\n         return (\r\n           <div>\r\n-            <input type=\"text\" placeholder=\"\"/>  \r\n+            <input type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n+            <button></button>\r\n+            <input type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671620765115,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n       render(){\r\n         return (\r\n           <div>\r\n             <input type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n-            <button></button>\r\n+            <button>点击提示左侧数据</button>\r\n             <input type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n"
+                },
+                {
+                    "date": 1671620840171,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,13 +25,17 @@\n       render(){\r\n         return (\r\n           <div>\r\n             <input type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n-            <button>点击提示左侧数据</button>\r\n+            <button onClick={alertData}>点击提示左侧数据</button>\r\n             <input type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n+\r\n+      alertData = ()=>{\r\n+        alert('aaaa')\r\n+      }\r\n     }\r\n     ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n"
+                },
+                {
+                    "date": 1671620882978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n       render(){\r\n         return (\r\n           <div>\r\n             <input type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n-            <button onClick={alertData}>点击提示左侧数据</button>\r\n+            <button onClick={this.alertData}>点击提示左侧数据</button>\r\n             <input type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n"
+                },
+                {
+                    "date": 1671620889216,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n         )\r\n       }\r\n \r\n       alertData = ()=>{\r\n-        alert('aaaa')\r\n+        alert()\r\n       }\r\n     }\r\n     ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n   </script>\r\n"
+                },
+                {
+                    "date": 1671620984410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,17 +22,21 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Demo extends React.Component{\r\n       render(){\r\n+        const {leftData,rightData} = this.state\r\n         return (\r\n           <div>\r\n-            <input type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n+            <input value={leftData} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n-            <input type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n+            <input value={rightData} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n-\r\n+      state = {\r\n+        leftData:'',\r\n+        rightData:''\r\n+      }\r\n       alertData = ()=>{\r\n         alert()\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671620992559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,11 +25,11 @@\n       render(){\r\n         const {leftData,rightData} = this.state\r\n         return (\r\n           <div>\r\n-            <input value={leftData} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n+            <input Value={leftData} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n-            <input value={rightData} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n+            <input Value={rightData} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n       state = {\r\n"
+                },
+                {
+                    "date": 1671620998736,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,11 +25,11 @@\n       render(){\r\n         const {leftData,rightData} = this.state\r\n         return (\r\n           <div>\r\n-            <input Value={leftData} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n+            <input value={leftData} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n-            <input Value={rightData} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n+            <input value={rightData} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n       state = {\r\n"
+                },
+                {
+                    "date": 1671621012009,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,11 +25,11 @@\n       render(){\r\n         const {leftData,rightData} = this.state\r\n         return (\r\n           <div>\r\n-            <input value={leftData} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n+            <input onChange={leftData} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n-            <input value={rightData} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n+            <input onChange={rightData} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n       state = {\r\n"
+                },
+                {
+                    "date": 1671621054547,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n       render(){\r\n         const {leftData,rightData} = this.state\r\n         return (\r\n           <div>\r\n-            <input onChange={leftData} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n+            <input onChange={()=>leftData} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n             <input onChange={rightData} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n"
+                }
+            ],
+            "date": 1671620638929,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!-- 限制props的类型  -->\r\n  <script src=\"../js/prop-types.js\"></script>\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class Demo extends React.Component\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

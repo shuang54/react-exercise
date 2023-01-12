@@ -1,0 +1,110 @@
+{
+    "sourceFile": "06_组件三大实例1_state/练习1.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 23,
+            "patches": [
+                {
+                    "date": 1671607385384,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671607410807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class MyComponent extends React.Component {\r\n       render() {\r\n-        return <h2>我是用类定义的组件(使用与复杂组件的定义)</h2>\r\n+        return <h2>今天天气很炎热</h2>\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n   </script>\r\n"
+                },
+                {
+                    "date": 1671607454133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,8 +20,14 @@\n \r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class MyComponent extends React.Component {\r\n+      constructor(props){\r\n+        super(props)\r\n+        this.state = {\r\n+          isHot:true,\r\n+        }\r\n+      }\r\n       render() {\r\n         return <h2>今天天气很炎热</h2>\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671607468312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,9 @@\n           isHot:true,\r\n         }\r\n       }\r\n       render() {\r\n+        const {isHot} = props\r\n         return <h2>今天天气很炎热</h2>\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n"
+                },
+                {
+                    "date": 1671607493663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,10 +27,10 @@\n           isHot:true,\r\n         }\r\n       }\r\n       render() {\r\n-        const {isHot} = props\r\n-        return <h2>今天天气很炎热</h2>\r\n+        const {isHot} = this.props\r\n+        return <h2>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n   </script>\r\n"
+                },
+                {
+                    "date": 1671607505495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n     class MyComponent extends React.Component {\r\n       constructor(props){\r\n         super(props)\r\n         this.state = {\r\n-          isHot:true,\r\n+          isHot:false,\r\n         }\r\n       }\r\n       render() {\r\n         const {isHot} = this.props\r\n"
+                },
+                {
+                    "date": 1671607513663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n     class MyComponent extends React.Component {\r\n       constructor(props){\r\n         super(props)\r\n         this.state = {\r\n-          isHot:false,\r\n+          isHot:true,\r\n         }\r\n       }\r\n       render() {\r\n         const {isHot} = this.props\r\n"
+                },
+                {
+                    "date": 1671607536108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,8 +28,9 @@\n         }\r\n       }\r\n       render() {\r\n         const {isHot} = this.props\r\n+        console.log(this)\r\n         return <h2>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n"
+                },
+                {
+                    "date": 1671607567014,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n           isHot:true,\r\n         }\r\n       }\r\n       render() {\r\n-        const {isHot} = this.props\r\n+        const {isHot} = this.props.state\r\n         console.log(this)\r\n         return <h2>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671607573767,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n           isHot:true,\r\n         }\r\n       }\r\n       render() {\r\n-        const {isHot} = this.props.state\r\n+        const {isHot} = this.props\r\n         console.log(this)\r\n         return <h2>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671607587285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n           isHot:true,\r\n         }\r\n       }\r\n       render() {\r\n-        const {isHot} = this.props\r\n+        const {isHot} = this.state\r\n         console.log(this)\r\n         return <h2>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n     }\r\n"
+                },
+                {
+                    "date": 1671608612104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,12 +29,14 @@\n       }\r\n       render() {\r\n         const {isHot} = this.state\r\n         console.log(this)\r\n-        return <h2>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n+        return <h2 onClick={demo}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n+\r\n+    \r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671608628079,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,11 @@\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n \r\n-    \r\n+    function demo(){\r\n+      console.log('标题被点击了')\r\n+    }\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671609500358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,16 +29,12 @@\n       }\r\n       render() {\r\n         const {isHot} = this.state\r\n         console.log(this)\r\n-        return <h2 onClick={demo}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n+        return <h2 onClick={this.change}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n-\r\n-    function demo(){\r\n-      console.log('标题被点击了')\r\n-    }\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671609511613,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,10 +29,13 @@\n       }\r\n       render() {\r\n         const {isHot} = this.state\r\n         console.log(this)\r\n-        return <h2 onClick={this.change}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n+        return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n+      changeWeather(){\r\n+        \r\n+      }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n   </script>\r\n </body>\r\n"
+                },
+                {
+                    "date": 1671609518402,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n         console.log(this)\r\n         return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n       changeWeather(){\r\n-        \r\n+        console.log(this);\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n   </script>\r\n"
+                },
+                {
+                    "date": 1671610000134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,16 +25,18 @@\n         super(props)\r\n         this.state = {\r\n           isHot:true,\r\n         }\r\n+        this.changeWeather = this.changeWeather.bind(this)\r\n       }\r\n       render() {\r\n         const {isHot} = this.state\r\n         console.log(this)\r\n         return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n       changeWeather(){\r\n         console.log(this);\r\n+        this.state.isHot = !this.state.isHot\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n   </script>\r\n"
+                },
+                {
+                    "date": 1671610861103,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,13 @@\n         return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n       changeWeather(){\r\n         console.log(this);\r\n-        this.state.isHot = !this.state.isHot\r\n+        // 不能直接修改state的值\r\n+        // this.state.isHot = !this.state.isHot\r\n+\r\n+        //通过setState修改\r\n+        this.setState({state:!this.state.isHot})\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n   </script>\r\n"
+                },
+                {
+                    "date": 1671610896474,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,8 +38,9 @@\n         // 不能直接修改state的值\r\n         // this.state.isHot = !this.state.isHot\r\n \r\n         //通过setState修改\r\n+        const isHot = this.state.isHot\r\n         this.setState({state:!this.state.isHot})\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n"
+                },
+                {
+                    "date": 1671610904127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n         // this.state.isHot = !this.state.isHot\r\n \r\n         //通过setState修改\r\n         const isHot = this.state.isHot\r\n-        this.setState({state:!this.state.isHot})\r\n+        this.setState({state:!isHot})\r\n       }\r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n   </script>\r\n"
+                },
+                {
+                    "date": 1671610912290,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,22 +27,23 @@\n           isHot:true,\r\n         }\r\n         this.changeWeather = this.changeWeather.bind(this)\r\n       }\r\n-      render() {\r\n-        const {isHot} = this.state\r\n-        console.log(this)\r\n-        return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n-      }\r\n-      changeWeather(){\r\n+       changeWeather() {\r\n         console.log(this);\r\n         // 不能直接修改state的值\r\n         // this.state.isHot = !this.state.isHot\r\n \r\n         //通过setState修改\r\n         const isHot = this.state.isHot\r\n-        this.setState({state:!isHot})\r\n+        this.setState({ state: !isHot })\r\n       }\r\n+      render() {\r\n+        const {isHot} = this.state\r\n+        console.log(this)\r\n+        return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n+      }\r\n+     \r\n     }\r\n     ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n   </script>\r\n </body>\r\n"
+                },
+                {
+                    "date": 1671610922412,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,8 @@\n         }\r\n         this.changeWeather = this.changeWeather.bind(this)\r\n       }\r\n        changeWeather() {\r\n-        console.log(this);\r\n         // 不能直接修改state的值\r\n         // this.state.isHot = !this.state.isHot\r\n \r\n         //通过setState修改\r\n"
+                },
+                {
+                    "date": 1671610936252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,8 @@\n         this.setState({ state: !isHot })\r\n       }\r\n       render() {\r\n         const {isHot} = this.state\r\n-        console.log(this)\r\n         return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n       }\r\n      \r\n     }\r\n"
+                },
+                {
+                    "date": 1671610950279,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n         // this.state.isHot = !this.state.isHot\r\n \r\n         //通过setState修改\r\n         const isHot = this.state.isHot\r\n-        this.setState({ state: !isHot })\r\n+        this.setState({ isHot: !isHot })\r\n       }\r\n       render() {\r\n         const {isHot} = this.state\r\n         return <h2 onClick={this.changeWeather}>今天天气很{isHot ? '炎热':'凉爽'}</h2>\r\n"
+                }
+            ],
+            "date": 1671607385384,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class MyComponent extends React.Component {\r\n      render() {\r\n        return <h2>我是用类定义的组件(使用与复杂组件的定义)</h2>\r\n      }\r\n    }\r\n    ReactDOM.render(<MyComponent />, document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

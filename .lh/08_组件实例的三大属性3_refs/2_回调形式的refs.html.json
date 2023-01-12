@@ -1,0 +1,34 @@
+{
+    "sourceFile": "08_组件实例的三大属性3_refs/2_回调形式的refs.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1671622317857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671622343478,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,18 +26,18 @@\n         return (\r\n           <div>\r\n             <input ref={currentNode=>this.input1 = currentNode} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n-            <input ref=\"input2\" onBlur={this.alertData2} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n+            <input ref={c=>this.input2 = c} onBlur={this.alertData2} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n       alertData = ()=>{\r\n         const {input1} = this\r\n         alert(input1.value)\r\n       }\r\n       alertData2 = () => {\r\n-        const { input2 } = this.refs\r\n+        const { input2 } = this\r\n         alert(input2.value)\r\n       }\r\n     }\r\n     ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n"
+                },
+                {
+                    "date": 1671622372049,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,9 @@\n     class Demo extends React.Component{\r\n       render(){\r\n         return (\r\n           <div>\r\n+            // currentNode 为当前节点\r\n             <input ref={currentNode=>this.input1 = currentNode} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n             <input ref={c=>this.input2 = c} onBlur={this.alertData2} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n"
+                },
+                {
+                    "date": 1671622387938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     class Demo extends React.Component{\r\n       render(){\r\n         return (\r\n           <div>\r\n-            // currentNode 为当前节点\r\n+            <!--  currentNode 为当前节点-->\r\n             <input ref={currentNode=>this.input1 = currentNode} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n             <input ref={c=>this.input2 = c} onBlur={this.alertData2} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n"
+                },
+                {
+                    "date": 1671622398946,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,8 @@\n     class Demo extends React.Component{\r\n       render(){\r\n         return (\r\n           <div>\r\n-            <!--  currentNode 为当前节点-->\r\n             <input ref={currentNode=>this.input1 = currentNode} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n             <input ref={c=>this.input2 = c} onBlur={this.alertData2} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n"
+                }
+            ],
+            "date": 1671622317857,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!-- 限制props的类型  -->\r\n  <script src=\"../js/prop-types.js\"></script>\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class Demo extends React.Component{\r\n      render(){\r\n        return (\r\n          <div>\r\n            <input ref={currentNode=>this.input1 = currentNode} type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n            <button onClick={this.alertData}>点击提示左侧数据</button>\r\n            <input ref=\"input2\" onBlur={this.alertData2} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n          </div>\r\n        )\r\n      }\r\n      alertData = ()=>{\r\n        const {input1} = this\r\n        alert(input1.value)\r\n      }\r\n      alertData2 = () => {\r\n        const { input2 } = this.refs\r\n        alert(input2.value)\r\n      }\r\n    }\r\n    ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "sourceFile": "01_hello_react/hello_react.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1671596074067,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671596184736,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,17 @@\n <head>\r\n   <meta charset=\"UTF-8\">\r\n   <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n-  <title>Document</title>\r\n+  <title>Hello</title>\r\n </head>\r\n <body>\r\n-  \r\n+  <!-- 准备一个容器 -->\r\n+  <div id=\"test\"></div>\r\n+  <!-- react核心库 -->\r\n+  <script type=\"text/javascriopt\" src=\"../js/react.development.js\"></script>\r\n+  <!-- 支持react操作DOM -->\r\n+  <script src=\"../js/react-dom.development.js\"></script>\r\n+  <!-- 将jsx转为js -->\r\n+  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n </body>\r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671596836273,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,6 +14,12 @@\n   <!-- 支持react操作DOM -->\r\n   <script src=\"../js/react-dom.development.js\"></script>\r\n   <!-- 将jsx转为js -->\r\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n+\r\n+  <!--  -->\r\n+  <script type=\"text/babel\">\r\n+    const VDOM = <h1>Hello React</h1>\r\n+    ReactDOM.ran\r\n+  </script>\r\n </body>\r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671596844152,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,8 @@\n \r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     const VDOM = <h1>Hello React</h1>\r\n-    ReactDOM.ran\r\n+    ReactDOM.render()\r\n   </script>\r\n </body>\r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671596860974,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,8 +18,8 @@\n \r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     const VDOM = <h1>Hello React</h1>\r\n-    ReactDOM.render()\r\n+    ReactDOM.render(VDOM,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671596970520,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n <body>\r\n   <!-- 准备一个容器 -->\r\n   <div id=\"test\"></div>\r\n   <!-- react核心库 -->\r\n-  <script type=\"text/javascriopt\" src=\"../js/react.development.js\"></script>\r\n+  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n   <!-- 支持react操作DOM -->\r\n   <script src=\"../js/react-dom.development.js\"></script>\r\n   <!-- 将jsx转为js -->\r\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n"
+                }
+            ],
+            "date": 1671596074067,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Document</title>\r\n</head>\r\n<body>\r\n  \r\n</body>\r\n</html>"
+        }
+    ]
+}

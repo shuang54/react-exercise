@@ -1,0 +1,30 @@
+{
+    "sourceFile": "08_组件实例的三大属性3_refs/1_字符串形式的refs.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1671621579979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671621631427,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,18 +27,15 @@\n         return (\r\n           <div>\r\n             <input ref=\"input1\" type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n-            <input ref=\"input2\" onB type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n+            <input ref=\"input2\" onBlur={this.alertData2} type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n           </div>\r\n         )\r\n       }\r\n-      state = {\r\n-        leftData:'',\r\n-        rightData:''\r\n-      }\r\n       alertData = ()=>{\r\n-        alert()\r\n+        const {input1} = this.refs\r\n+        alert(input1.value)\r\n       }\r\n     }\r\n     ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n   </script>\r\n"
+                },
+                {
+                    "date": 1671621645287,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,8 @@\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Demo extends React.Component{\r\n       render(){\r\n-        const {leftData,rightData} = this.state\r\n         return (\r\n           <div>\r\n             <input ref=\"input1\" type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n             <button onClick={this.alertData}>点击提示左侧数据</button>\r\n"
+                },
+                {
+                    "date": 1671621661112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,8 +34,12 @@\n       alertData = ()=>{\r\n         const {input1} = this.refs\r\n         alert(input1.value)\r\n       }\r\n+      alertData2 = () => {\r\n+        const { input2 } = this.refs\r\n+        alert(input2.value)\r\n+      }\r\n     }\r\n     ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n"
+                }
+            ],
+            "date": 1671621579979,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!-- 限制props的类型  -->\r\n  <script src=\"../js/prop-types.js\"></script>\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class Demo extends React.Component{\r\n      render(){\r\n        const {leftData,rightData} = this.state\r\n        return (\r\n          <div>\r\n            <input ref=\"input1\" type=\"text\" placeholder=\"点击按钮弹出数据\"/>  \r\n            <button onClick={this.alertData}>点击提示左侧数据</button>\r\n            <input ref=\"input2\" onB type=\"text\" placeholder=\"失去焦点弹出数据\"/>  \r\n          </div>\r\n        )\r\n      }\r\n      state = {\r\n        leftData:'',\r\n        rightData:''\r\n      }\r\n      alertData = ()=>{\r\n        alert()\r\n      }\r\n    }\r\n    ReactDOM.render(<Demo/>,document.getElementById('test'))\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}

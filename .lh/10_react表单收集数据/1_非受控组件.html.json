@@ -1,0 +1,38 @@
+{
+    "sourceFile": "10_react表单收集数据/1_非受控组件.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1671677994051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1671678025342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,8 +29,9 @@\n           </form>\r\n         )\r\n       }\r\n     }\r\n+    ReactDOM.render(<Login/>,document.getElementById('test'))\r\n   </script>\r\n </body>\r\n \r\n </html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1671678046170,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,10 +22,10 @@\n     class Login extends React.Component{\r\n       render(){\r\n         return (\r\n           <form>\r\n-            <input type=\"text\" name=\"username\" />  \r\n-            <input type=\"text\" name=\"password\" />  \r\n+            用户名：<input type=\"text\" name=\"username\" />  \r\n+            密码：<input type=\"text\" name=\"password\" />  \r\n             <button>登录</button>\r\n           </form>\r\n         )\r\n       }\r\n"
+                },
+                {
+                    "date": 1671678147845,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,13 +19,18 @@\n   <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n   <!--  -->\r\n   <script type=\"text/babel\">\r\n     class Login extends React.Component{\r\n+      handleSubmit = (event)=>{\r\n+        event.preventDefault();\r\n+        const {username,password} = this\r\n+        alert(username.value,password.value)\r\n+      }\r\n       render(){\r\n         return (\r\n-          <form>\r\n-            用户名：<input type=\"text\" name=\"username\" />  \r\n-            密码：<input type=\"text\" name=\"password\" />  \r\n+          <form onSubmit={this.handleSubmit}>\r\n+            用户名：<input ref={ c=>this.username=c } type=\"text\" name=\"username\" />  \r\n+            密码：<input ref={ c=>this.password=c } type=\"text\" name=\"password\" />  \r\n             <button>登录</button>\r\n           </form>\r\n         )\r\n       }\r\n"
+                },
+                {
+                    "date": 1671678184296,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n     class Login extends React.Component{\r\n       handleSubmit = (event)=>{\r\n         event.preventDefault();\r\n         const {username,password} = this\r\n-        alert(username.value,password.value)\r\n+        alert(username.value+password.value)\r\n       }\r\n       render(){\r\n         return (\r\n           <form onSubmit={this.handleSubmit}>\r\n"
+                },
+                {
+                    "date": 1671678252928,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n     class Login extends React.Component{\r\n       handleSubmit = (event)=>{\r\n         event.preventDefault();\r\n         const {username,password} = this\r\n-        alert(username.value+password.value)\r\n+        alert(`用户名${username.value},密码${password.value}`)\r\n       }\r\n       render(){\r\n         return (\r\n           <form onSubmit={this.handleSubmit}>\r\n"
+                }
+            ],
+            "date": 1671677994051,
+            "name": "Commit-0",
+            "content": "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Hello</title>\r\n</head>\r\n\r\n<body>\r\n  <!-- 准备一个容器 -->\r\n  <div id=\"test\"></div>\r\n  <!-- react核心库 -->\r\n  <script type=\"text/javascript\" src=\"../js/react.development.js\"></script>\r\n  <!-- 支持react操作DOM -->\r\n  <script src=\"../js/react-dom.development.js\"></script>\r\n  <!-- 将jsx转为js -->\r\n  <script type=\"text/javascript\" src=\"../js/babel.min.js\"></script>\r\n  <!--  -->\r\n  <script type=\"text/babel\">\r\n    class Login extends React.Component{\r\n      render(){\r\n        return (\r\n          <form>\r\n            <input type=\"text\" name=\"username\" />  \r\n            <input type=\"text\" name=\"password\" />  \r\n            <button>登录</button>\r\n          </form>\r\n        )\r\n      }\r\n    }\r\n  </script>\r\n</body>\r\n\r\n</html>"
+        }
+    ]
+}
